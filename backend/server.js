@@ -9,6 +9,14 @@ const app = express()
 const PORT = process.env.PORT || 5000;
 const server = http.createServer(app)
 const io = new Server(server)
+import path from 'path';
+import __dirname from 'path'
+
+
+app.use(express.static("../frontned/dist"))
+app.use((req,res,next)=>{
+    res.sendFile(path.join(__dirname,"dist","index.html"))
+})
 
 //  kon sa user ka username or uske socket id kay hai
 const userSocketMap = {}
@@ -80,6 +88,12 @@ io.on('connection', (socket) => {
         // delete userSocketMap[socket.id]
     })
 })
+
+// app.get("/",(req,res)=>{
+//     res.sendFile("/dist/index.html")
+//     // res.send("hello")
+// })
+
 
 
 
