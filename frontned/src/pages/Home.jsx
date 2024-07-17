@@ -9,7 +9,6 @@ const Home = () => {
     const navigate = useNavigate()
     const [rooomId, setRoomId] = useState("")
     const [username, setUsername] = useState("")
-    console.log({ rooomId,username })
     const createRoom = () => {
         const id = uuidV4()
         setRoomId(id)
